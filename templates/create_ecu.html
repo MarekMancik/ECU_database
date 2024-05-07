@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create ECU</title>
+</head>
+<body>
+  <h1>Create ECU</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <table>
+            <tr>
+                {% for field in ecu_form %}
+                    <td>{{ field.label_tag }}</td>
+                {% endfor %}
+            </tr>
+
+            <tr>
+                {% for field in ecu_form %}
+                    <td>{{ field }}</td>
+                {% endfor %}
+            </tr>
+        </table>
+        <button type="submit">Create</button>
+    </form>
+
+</body>
+</html>
