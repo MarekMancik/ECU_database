@@ -5,7 +5,7 @@
 </head>
 <body>
   <h1>Create ECU</h1>
-    <form method="POST">
+    <form method="POST" action="{% url 'add-ecu' %}">
         {% csrf_token %}
         <table>
             <tr>
