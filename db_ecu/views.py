@@ -1,14 +1,18 @@
 from django.shortcuts import render
 from db_ecu.models import ECU
 from django.forms import ModelForm
-
+from collections import defaultdict
 
 
 # Create your views here.
 def ecu_tables(request):
-    ecu_data = ECU.objects.all()
-    ecu_name = ECU.ecu_name
-    return render(request, 'ECU_tables.html', {'ecu_data': ecu_data, 'ecu_name': ecu_name})
+    ecu_list = ECU.objects.select_related('family').all()
+    families_ecus = defaultdict(list)
+    for ecu in ecu_list:
+        families_ecus[ecu.family.name].append(ecu)
+        print(families_ecus)
+    sorted_families_ecus = dict(sorted(families_ecus.items()))
+    return render(request, 'ECU_tables.html', {'families_ecus': sorted_families_ecus})
 
 
 class EcuForm(ModelForm):
@@ -20,5 +24,3 @@ class EcuForm(ModelForm):
 def create_ecu(request):
     ecu_form = EcuForm()
     return render(request, 'create_ecu.html', {'ecu_form': ecu_form})
-
-
