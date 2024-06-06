@@ -17,7 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from db_ecu.views import ecu_tables, create_ecu
-from user.views import sing_up
+# from user.views import sing_up
 from add_ecu.views import add_ecu
 
 
@@ -26,6 +26,6 @@ urlpatterns = [
     path('ECU-tables/', ecu_tables, name='ecu-tables'),
     path('create-ecu/', create_ecu, name='create-ecu'),
     path('accounts/', include('django.contrib.auth.urls')),
-    path('sing-up/', sing_up, name='sing-up'),
     path('add-ecu/', add_ecu, name='add-ecu'),
+    path('user/', include('user.urls'))    # URL link for user application
 ]

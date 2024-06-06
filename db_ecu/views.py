@@ -10,7 +10,7 @@ def ecu_tables(request):
     families_ecus = defaultdict(list)
     for ecu in ecu_list:
         families_ecus[ecu.family.name].append(ecu)
-        print(families_ecus)
+
     sorted_families_ecus = dict(sorted(families_ecus.items()))
     return render(request, 'ECU_tables.html', {'families_ecus': sorted_families_ecus})
 
