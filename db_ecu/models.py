@@ -2,6 +2,7 @@ from django.db import models
 from datetime import datetime
 
 from django.db.models import CharField
+from django.contrib.auth.models import User
 
 
 # Create your models here.
@@ -23,7 +24,9 @@ class ECU(models.Model):
     hw_number = models.CharField(max_length=10)
     sw_number = models.CharField(max_length=10)
     created_at = models.DateTimeField(auto_now_add=True)
+    creator = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
     ecu_comment = models.CharField(max_length=30)
+
 
     def __str__(self) -> CharField:
         return self.ecu_name

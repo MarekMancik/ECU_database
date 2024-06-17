@@ -1,7 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render,get_object_or_404, redirect
 from db_ecu.models import ECU
 from django.forms import ModelForm
 from collections import defaultdict
+from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
@@ -21,6 +22,18 @@ class EcuForm(ModelForm):
         fields = "__all__"
 
 
+@login_required
 def create_ecu(request):
     ecu_form = EcuForm()
     return render(request, 'create_ecu.html', {'ecu_form': ecu_form})
+
+@login_required
+def edit_ecu(request, ecu_id):
+    ecu_unit = get_object_or_404(ECU, id=ecu_id)
+
+    # checking user
+    if request.user != ecu_unit.creator:
+        return redirect('You are not the ecus own - you can not change it!')
+
+
+
