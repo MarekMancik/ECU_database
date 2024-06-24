@@ -1,8 +1,5 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Create ECU</title>
-</head>
+{% extends 'base.html' %}
+{% block content %}
 <body>
   <h1>Create ECU</h1>
     <form method="POST" action="{% url 'add-ecu' %}">
@@ -24,4 +21,4 @@
     </form>
 
 </body>
-</html>
+{% endblock %}
