@@ -19,7 +19,7 @@ def ecu_tables(request):
 class EcuForm(ModelForm):
     class Meta:
         model = ECU
-        fields = "__all__"
+        fields = ['ecu_name', 'customer_number', 'hw_number', 'sw_number', 'ecu_description', 'comment']
 
 
 @login_required

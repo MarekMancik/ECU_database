@@ -20,12 +20,13 @@ class ECU(models.Model):
     family = models.ForeignKey(Family, on_delete=models.CASCADE, null=True, blank=True)
     ecu_name = models.CharField(max_length=20)
     customer_number = models.CharField(max_length=15)
-    al_part_no = models.CharField(max_length=10, null=True, blank=True)
+    al_part_no = models.CharField(max_length=11, default='N/A',null=True, blank=True)
     hw_number = models.CharField(max_length=10)
     sw_number = models.CharField(max_length=10)
     created_at = models.DateTimeField(auto_now_add=True)
     creator = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
-    ecu_comment = models.CharField(max_length=30)
+    ecu_description = models.CharField(max_length=40, null=True, blank=True)
+    comment = models.CharField(max_length=100, null=True, blank=True)
 
 
     def __str__(self) -> CharField:

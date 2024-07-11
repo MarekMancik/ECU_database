@@ -24,7 +24,7 @@ from add_ecu.views import add_ecu
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('ECU-tables/', ecu_tables, name='ecu-tables'),
+    path('', ecu_tables, name='ecu-tables'),
     path('create-ecu/', create_ecu, name='create-ecu'),
     path('accounts/', include('django.contrib.auth.urls')),
     path('add-ecu/', add_ecu, name='add-ecu'),

@@ -1,7 +1,8 @@
-{% extends 'base.html' %}
-{% block content %}
+{% extends 'ECU_tables.html' %}
+
+{% block table_content %}
 <body>
-  <h1>Create ECU</h1>
+  <h3>Create ECU</h3>
     <form method="POST" action="{% url 'add-ecu' %}">
         {% csrf_token %}
         <table>
@@ -17,8 +18,10 @@
                 {% endfor %}
             </tr>
         </table>
-        <button type="submit">Create</button>
+        <div class="d-flex justify-content-end">
+        <button type="submit" class="btn btn-primary">Create</button>
+        </div>
     </form>
 
 </body>
-{% endblock %}
+{% endblock table_content %}

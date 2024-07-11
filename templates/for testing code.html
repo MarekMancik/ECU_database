@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Přidání Řádku do Tabulky</title>
+</head>
+<body>
+
+<table id="data-table">
+    <thead>
+        <tr>
+            <th>Název</th>
+            <th>Popis</th>
+            <th>Akce</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- Zde mohou být vloženy existující řádky -->
+    </tbody>
+</table>
+
+<!-- Tlačítko pro přidání nového řádku -->
+<button id="add-row-btn">Přidat Nový Řádek</button>
+
+<script>
+document.getElementById('add-row-btn').addEventListener('click', function() {
+    // Vytvoření nového řádku tabulky s formulářovými prvky
+    var newRow = '<tr>' +
+        '<td><input type="text" name="name" placeholder="Název"/></td>' +
+        '<td><input type="text" name="description" placeholder="Popis"/></td>' +
+        '<td><button type="button" class="save-btn">Uložit</button></td>' +
+    '</tr>';
+
+    // Přidání nového řádku do tabulky pod existující řádky
+    document.getElementById('data-table').querySelector('tbody').insertAdjacentHTML('beforeend', newRow);
+});
+</script>
+
+</body>
+</html>
